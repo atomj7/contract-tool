@@ -11,18 +11,6 @@
       "javadoc": "ПК"
     },
     {
-      "fieldName": "contractId",
-      "fieldType": "Long",
-      "fieldValidateRules": ["required"],
-      "javadoc": "Ссылка на контракт"
-    },
-    {
-      "fieldName": "projectId",
-      "fieldType": "Long",
-      "fieldValidateRules": ["required"],
-      "javadoc": "Ссылка на проект"
-    },
-    {
       "fieldName": "subcontractCipher",
       "fieldType": "String",
       "fieldValidateRules": ["required"],

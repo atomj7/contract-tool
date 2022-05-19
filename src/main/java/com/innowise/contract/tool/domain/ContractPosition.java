@@ -38,13 +38,6 @@ public class ContractPosition implements Serializable {
     private Long employeeId;
 
     /**
-     * Ссылка на субконтракт
-     */
-    @NotNull(message = "must not be null")
-    @Column("subcontract_id")
-    private Long subcontractId;
-
-    /**
      * Контрактные позиции
      */
     @NotNull(message = "must not be null")
@@ -138,19 +131,6 @@ public class ContractPosition implements Serializable {
 
     public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
-    }
-
-    public Long getSubcontractId() {
-        return this.subcontractId;
-    }
-
-    public ContractPosition subcontractId(Long subcontractId) {
-        this.setSubcontractId(subcontractId);
-        return this;
-    }
-
-    public void setSubcontractId(Long subcontractId) {
-        this.subcontractId = subcontractId;
     }
 
     public Integer getNumberContractPosition() {
@@ -292,7 +272,6 @@ public class ContractPosition implements Serializable {
             "id=" + getId() +
             ", contractPositionId='" + getContractPositionId() + "'" +
             ", employeeId=" + getEmployeeId() +
-            ", subcontractId=" + getSubcontractId() +
             ", numberContractPosition=" + getNumberContractPosition() +
             ", restrictionTypeId='" + getRestrictionTypeId() + "'" +
             ", restriction=" + getRestriction() +

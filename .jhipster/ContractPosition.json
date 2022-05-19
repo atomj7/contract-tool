@@ -22,12 +22,6 @@
       "javadoc": "Оплачиваемый сотрудник"
     },
     {
-      "fieldName": "subcontractId",
-      "fieldType": "Long",
-      "fieldValidateRules": ["required"],
-      "javadoc": "Ссылка на субконтракт"
-    },
-    {
       "fieldName": "numberContractPosition",
       "fieldType": "Integer",
       "fieldValidateRules": ["required"],

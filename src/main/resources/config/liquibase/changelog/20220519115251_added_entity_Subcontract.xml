@@ -14,12 +14,6 @@
             <column name="id" type="bigint" remarks="ПК" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="contract_id" type="bigint" remarks="Ссылка на контракт">
-                <constraints nullable="false" />
-            </column>
-            <column name="project_id" type="bigint" remarks="Ссылка на проект">
-                <constraints nullable="false" />
-            </column>
             <column name="subcontract_cipher" type="varchar(255)" remarks="Шифр субконтракта">
                 <constraints nullable="false" />
             </column>
@@ -95,8 +89,6 @@
                   tableName="subcontract"
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
-            <column name="contract_id" type="numeric"/>
-            <column name="project_id" type="numeric"/>
             <column name="subcontract_cipher" type="string"/>
             <column name="status_id" type="string"/>
             <column name="cooperation_type_id" type="string"/>

@@ -28,7 +28,6 @@ public class ContractPositionRowMapper implements BiFunction<Row, String, Contra
         entity.setId(converter.fromRow(row, prefix + "_id", Long.class));
         entity.setContractPositionId(converter.fromRow(row, prefix + "_contract_position_id", String.class));
         entity.setEmployeeId(converter.fromRow(row, prefix + "_employee_id", Long.class));
-        entity.setSubcontractId(converter.fromRow(row, prefix + "_subcontract_id", Long.class));
         entity.setNumberContractPosition(converter.fromRow(row, prefix + "_number_contract_position", Integer.class));
         entity.setRestrictionTypeId(converter.fromRow(row, prefix + "_restriction_type_id", String.class));
         entity.setRestriction(converter.fromRow(row, prefix + "_restriction", Integer.class));

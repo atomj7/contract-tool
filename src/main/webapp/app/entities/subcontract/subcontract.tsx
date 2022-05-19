@@ -104,12 +104,6 @@ export const Subcontract = (props: RouteComponentProps<{ url: string }>) => {
                 <th className="hand" onClick={sort('id')}>
                   <Translate contentKey="contractToolApp.subcontract.id">Id</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th className="hand" onClick={sort('contractId')}>
-                  <Translate contentKey="contractToolApp.subcontract.contractId">Contract Id</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('projectId')}>
-                  <Translate contentKey="contractToolApp.subcontract.projectId">Project Id</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
                 <th className="hand" onClick={sort('subcontractCipher')}>
                   <Translate contentKey="contractToolApp.subcontract.subcontractCipher">Subcontract Cipher</Translate>{' '}
                   <FontAwesomeIcon icon="sort" />
@@ -180,8 +174,6 @@ export const Subcontract = (props: RouteComponentProps<{ url: string }>) => {
                       {subcontract.id}
                     </Button>
                   </td>
-                  <td>{subcontract.contractId}</td>
-                  <td>{subcontract.projectId}</td>
                   <td>{subcontract.subcontractCipher}</td>
                   <td>{subcontract.statusId}</td>
                   <td>{subcontract.cooperationTypeId}</td>

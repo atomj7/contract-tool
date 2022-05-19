@@ -25,13 +25,6 @@ public class Project implements Serializable {
     private Long id;
 
     /**
-     * Клиент
-     */
-    @NotNull(message = "must not be null")
-    @Column("client_id")
-    private Long clientId;
-
-    /**
      * Название проекта
      */
     @NotNull(message = "must not be null")
@@ -93,19 +86,6 @@ public class Project implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getClientId() {
-        return this.clientId;
-    }
-
-    public Project clientId(Long clientId) {
-        this.setClientId(clientId);
-        return this;
-    }
-
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
     }
 
     public String getName() {
@@ -263,7 +243,6 @@ public class Project implements Serializable {
     public String toString() {
         return "Project{" +
             "id=" + getId() +
-            ", clientId=" + getClientId() +
             ", name='" + getName() + "'" +
             ", startDate='" + getStartDate() + "'" +
             ", finishDate='" + getFinishDate() + "'" +

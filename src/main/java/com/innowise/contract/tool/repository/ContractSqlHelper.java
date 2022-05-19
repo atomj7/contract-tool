@@ -12,7 +12,6 @@ public class ContractSqlHelper {
         List<Expression> columns = new ArrayList<>();
         columns.add(Column.aliased("id", table, columnPrefix + "_id"));
         columns.add(Column.aliased("cipher", table, columnPrefix + "_cipher"));
-        columns.add(Column.aliased("client_id", table, columnPrefix + "_client_id"));
         columns.add(Column.aliased("provider_id", table, columnPrefix + "_provider_id"));
         columns.add(Column.aliased("type_id", table, columnPrefix + "_type_id"));
         columns.add(Column.aliased("sum", table, columnPrefix + "_sum"));

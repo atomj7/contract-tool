@@ -5,7 +5,6 @@ export interface IContractPosition {
   id?: number;
   contractPositionId?: string;
   employeeId?: number | null;
-  subcontractId?: number;
   numberContractPosition?: number;
   restrictionTypeId?: string;
   restriction?: number;

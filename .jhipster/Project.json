@@ -10,12 +10,6 @@
       "fieldType": "Long"
     },
     {
-      "fieldName": "clientId",
-      "fieldType": "Long",
-      "fieldValidateRules": ["required"],
-      "javadoc": "Клиент"
-    },
-    {
       "fieldName": "name",
       "fieldType": "String",
       "fieldValidateRules": ["required"],

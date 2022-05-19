@@ -32,13 +32,6 @@ public class Contract implements Serializable {
     private String cipher;
 
     /**
-     * Айди клиента
-     */
-    @NotNull(message = "must not be null")
-    @Column("client_id")
-    private Long clientId;
-
-    /**
      * Справочник поставщиков
      */
     @NotNull(message = "must not be null")
@@ -153,19 +146,6 @@ public class Contract implements Serializable {
 
     public void setCipher(String cipher) {
         this.cipher = cipher;
-    }
-
-    public Long getClientId() {
-        return this.clientId;
-    }
-
-    public Contract clientId(Long clientId) {
-        this.setClientId(clientId);
-        return this;
-    }
-
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
     }
 
     public String getProviderId() {
@@ -402,7 +382,6 @@ public class Contract implements Serializable {
         return "Contract{" +
             "id=" + getId() +
             ", cipher='" + getCipher() + "'" +
-            ", clientId=" + getClientId() +
             ", providerId='" + getProviderId() + "'" +
             ", typeId='" + getTypeId() + "'" +
             ", sum=" + getSum() +

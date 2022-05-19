@@ -100,34 +100,6 @@ export const SubcontractUpdate = (props: RouteComponentProps<{ id: string }>) =>
                 />
               ) : null}
               <ValidatedField
-                label={translate('contractToolApp.subcontract.contractId')}
-                id="subcontract-contractId"
-                name="contractId"
-                data-cy="contractId"
-                type="text"
-                validate={{
-                  required: { value: true, message: translate('entity.validation.required') },
-                  validate: v => isNumber(v) || translate('entity.validation.number'),
-                }}
-              />
-              <UncontrolledTooltip target="contractIdLabel">
-                <Translate contentKey="contractToolApp.subcontract.help.contractId" />
-              </UncontrolledTooltip>
-              <ValidatedField
-                label={translate('contractToolApp.subcontract.projectId')}
-                id="subcontract-projectId"
-                name="projectId"
-                data-cy="projectId"
-                type="text"
-                validate={{
-                  required: { value: true, message: translate('entity.validation.required') },
-                  validate: v => isNumber(v) || translate('entity.validation.number'),
-                }}
-              />
-              <UncontrolledTooltip target="projectIdLabel">
-                <Translate contentKey="contractToolApp.subcontract.help.projectId" />
-              </UncontrolledTooltip>
-              <ValidatedField
                 label={translate('contractToolApp.subcontract.subcontractCipher')}
                 id="subcontract-subcontractCipher"
                 name="subcontractCipher"

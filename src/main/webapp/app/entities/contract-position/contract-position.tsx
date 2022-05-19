@@ -112,10 +112,6 @@ export const ContractPosition = (props: RouteComponentProps<{ url: string }>) =>
                   <Translate contentKey="contractToolApp.contractPosition.employeeId">Employee Id</Translate>{' '}
                   <FontAwesomeIcon icon="sort" />
                 </th>
-                <th className="hand" onClick={sort('subcontractId')}>
-                  <Translate contentKey="contractToolApp.contractPosition.subcontractId">Subcontract Id</Translate>{' '}
-                  <FontAwesomeIcon icon="sort" />
-                </th>
                 <th className="hand" onClick={sort('numberContractPosition')}>
                   <Translate contentKey="contractToolApp.contractPosition.numberContractPosition">Number Contract Position</Translate>{' '}
                   <FontAwesomeIcon icon="sort" />
@@ -160,7 +156,6 @@ export const ContractPosition = (props: RouteComponentProps<{ url: string }>) =>
                   </td>
                   <td>{contractPosition.contractPositionId}</td>
                   <td>{contractPosition.employeeId}</td>
-                  <td>{contractPosition.subcontractId}</td>
                   <td>{contractPosition.numberContractPosition}</td>
                   <td>{contractPosition.restrictionTypeId}</td>
                   <td>{contractPosition.restriction}</td>

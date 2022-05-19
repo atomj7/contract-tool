@@ -52,15 +52,6 @@ export const ContractPositionDetail = (props: RouteComponentProps<{ id: string }
           </dt>
           <dd>{contractPositionEntity.employeeId}</dd>
           <dt>
-            <span id="subcontractId">
-              <Translate contentKey="contractToolApp.contractPosition.subcontractId">Subcontract Id</Translate>
-            </span>
-            <UncontrolledTooltip target="subcontractId">
-              <Translate contentKey="contractToolApp.contractPosition.help.subcontractId" />
-            </UncontrolledTooltip>
-          </dt>
-          <dd>{contractPositionEntity.subcontractId}</dd>
-          <dt>
             <span id="numberContractPosition">
               <Translate contentKey="contractToolApp.contractPosition.numberContractPosition">Number Contract Position</Translate>
             </span>

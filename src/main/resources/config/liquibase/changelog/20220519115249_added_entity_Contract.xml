@@ -17,9 +17,6 @@
             <column name="cipher" type="varchar(255)" remarks="Шифр контракта">
                 <constraints nullable="false" />
             </column>
-            <column name="client_id" type="bigint" remarks="Айди клиента">
-                <constraints nullable="false" />
-            </column>
             <column name="provider_id" type="varchar(255)" remarks="Справочник поставщиков">
                 <constraints nullable="false" />
             </column>
@@ -81,7 +78,6 @@
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
             <column name="cipher" type="string"/>
-            <column name="client_id" type="numeric"/>
             <column name="provider_id" type="string"/>
             <column name="type_id" type="string"/>
             <column name="sum" type="numeric"/>

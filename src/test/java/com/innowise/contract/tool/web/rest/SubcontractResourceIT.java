@@ -37,12 +37,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 @WithMockUser
 class SubcontractResourceIT {
 
-    private static final Long DEFAULT_CONTRACT_ID = 1L;
-    private static final Long UPDATED_CONTRACT_ID = 2L;
-
-    private static final Long DEFAULT_PROJECT_ID = 1L;
-    private static final Long UPDATED_PROJECT_ID = 2L;
-
     private static final String DEFAULT_SUBCONTRACT_CIPHER = "AAAAAAAAAA";
     private static final String UPDATED_SUBCONTRACT_CIPHER = "BBBBBBBBBB";
 
@@ -119,8 +113,6 @@ class SubcontractResourceIT {
      */
     public static Subcontract createEntity(EntityManager em) {
         Subcontract subcontract = new Subcontract()
-            .contractId(DEFAULT_CONTRACT_ID)
-            .projectId(DEFAULT_PROJECT_ID)
             .subcontractCipher(DEFAULT_SUBCONTRACT_CIPHER)
             .statusId(DEFAULT_STATUS_ID)
             .cooperationTypeId(DEFAULT_COOPERATION_TYPE_ID)
@@ -148,8 +140,6 @@ class SubcontractResourceIT {
      */
     public static Subcontract createUpdatedEntity(EntityManager em) {
         Subcontract subcontract = new Subcontract()
-            .contractId(UPDATED_CONTRACT_ID)
-            .projectId(UPDATED_PROJECT_ID)
             .subcontractCipher(UPDATED_SUBCONTRACT_CIPHER)
             .statusId(UPDATED_STATUS_ID)
             .cooperationTypeId(UPDATED_COOPERATION_TYPE_ID)
@@ -206,8 +196,6 @@ class SubcontractResourceIT {
         List<Subcontract> subcontractList = subcontractRepository.findAll().collectList().block();
         assertThat(subcontractList).hasSize(databaseSizeBeforeCreate + 1);
         Subcontract testSubcontract = subcontractList.get(subcontractList.size() - 1);
-        assertThat(testSubcontract.getContractId()).isEqualTo(DEFAULT_CONTRACT_ID);
-        assertThat(testSubcontract.getProjectId()).isEqualTo(DEFAULT_PROJECT_ID);
         assertThat(testSubcontract.getSubcontractCipher()).isEqualTo(DEFAULT_SUBCONTRACT_CIPHER);
         assertThat(testSubcontract.getStatusId()).isEqualTo(DEFAULT_STATUS_ID);
         assertThat(testSubcontract.getCooperationTypeId()).isEqualTo(DEFAULT_COOPERATION_TYPE_ID);
@@ -247,50 +235,6 @@ class SubcontractResourceIT {
         // Validate the Subcontract in the database
         List<Subcontract> subcontractList = subcontractRepository.findAll().collectList().block();
         assertThat(subcontractList).hasSize(databaseSizeBeforeCreate);
-    }
-
-    @Test
-    void checkContractIdIsRequired() throws Exception {
-        int databaseSizeBeforeTest = subcontractRepository.findAll().collectList().block().size();
-        // set the field null
-        subcontract.setContractId(null);
-
-        // Create the Subcontract, which fails.
-        SubcontractDTO subcontractDTO = subcontractMapper.toDto(subcontract);
-
-        webTestClient
-            .post()
-            .uri(ENTITY_API_URL)
-            .contentType(MediaType.APPLICATION_JSON)
-            .bodyValue(TestUtil.convertObjectToJsonBytes(subcontractDTO))
-            .exchange()
-            .expectStatus()
-            .isBadRequest();
-
-        List<Subcontract> subcontractList = subcontractRepository.findAll().collectList().block();
-        assertThat(subcontractList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    void checkProjectIdIsRequired() throws Exception {
-        int databaseSizeBeforeTest = subcontractRepository.findAll().collectList().block().size();
-        // set the field null
-        subcontract.setProjectId(null);
-
-        // Create the Subcontract, which fails.
-        SubcontractDTO subcontractDTO = subcontractMapper.toDto(subcontract);
-
-        webTestClient
-            .post()
-            .uri(ENTITY_API_URL)
-            .contentType(MediaType.APPLICATION_JSON)
-            .bodyValue(TestUtil.convertObjectToJsonBytes(subcontractDTO))
-            .exchange()
-            .expectStatus()
-            .isBadRequest();
-
-        List<Subcontract> subcontractList = subcontractRepository.findAll().collectList().block();
-        assertThat(subcontractList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -575,10 +519,6 @@ class SubcontractResourceIT {
             .expectBody()
             .jsonPath("$.[*].id")
             .value(hasItem(subcontract.getId().intValue()))
-            .jsonPath("$.[*].contractId")
-            .value(hasItem(DEFAULT_CONTRACT_ID.intValue()))
-            .jsonPath("$.[*].projectId")
-            .value(hasItem(DEFAULT_PROJECT_ID.intValue()))
             .jsonPath("$.[*].subcontractCipher")
             .value(hasItem(DEFAULT_SUBCONTRACT_CIPHER))
             .jsonPath("$.[*].statusId")
@@ -631,10 +571,6 @@ class SubcontractResourceIT {
             .expectBody()
             .jsonPath("$.id")
             .value(is(subcontract.getId().intValue()))
-            .jsonPath("$.contractId")
-            .value(is(DEFAULT_CONTRACT_ID.intValue()))
-            .jsonPath("$.projectId")
-            .value(is(DEFAULT_PROJECT_ID.intValue()))
             .jsonPath("$.subcontractCipher")
             .value(is(DEFAULT_SUBCONTRACT_CIPHER))
             .jsonPath("$.statusId")
@@ -691,8 +627,6 @@ class SubcontractResourceIT {
         // Update the subcontract
         Subcontract updatedSubcontract = subcontractRepository.findById(subcontract.getId()).block();
         updatedSubcontract
-            .contractId(UPDATED_CONTRACT_ID)
-            .projectId(UPDATED_PROJECT_ID)
             .subcontractCipher(UPDATED_SUBCONTRACT_CIPHER)
             .statusId(UPDATED_STATUS_ID)
             .cooperationTypeId(UPDATED_COOPERATION_TYPE_ID)
@@ -724,8 +658,6 @@ class SubcontractResourceIT {
         List<Subcontract> subcontractList = subcontractRepository.findAll().collectList().block();
         assertThat(subcontractList).hasSize(databaseSizeBeforeUpdate);
         Subcontract testSubcontract = subcontractList.get(subcontractList.size() - 1);
-        assertThat(testSubcontract.getContractId()).isEqualTo(UPDATED_CONTRACT_ID);
-        assertThat(testSubcontract.getProjectId()).isEqualTo(UPDATED_PROJECT_ID);
         assertThat(testSubcontract.getSubcontractCipher()).isEqualTo(UPDATED_SUBCONTRACT_CIPHER);
         assertThat(testSubcontract.getStatusId()).isEqualTo(UPDATED_STATUS_ID);
         assertThat(testSubcontract.getCooperationTypeId()).isEqualTo(UPDATED_COOPERATION_TYPE_ID);
@@ -825,11 +757,10 @@ class SubcontractResourceIT {
         partialUpdatedSubcontract.setId(subcontract.getId());
 
         partialUpdatedSubcontract
-            .projectId(UPDATED_PROJECT_ID)
-            .paymentTermId(UPDATED_PAYMENT_TERM_ID)
+            .statusId(UPDATED_STATUS_ID)
             .finishDate(UPDATED_FINISH_DATE)
             .tasktTypeId(UPDATED_TASKT_TYPE_ID)
-            .link(UPDATED_LINK);
+            .domenId(UPDATED_DOMEN_ID);
 
         webTestClient
             .patch()
@@ -844,23 +775,21 @@ class SubcontractResourceIT {
         List<Subcontract> subcontractList = subcontractRepository.findAll().collectList().block();
         assertThat(subcontractList).hasSize(databaseSizeBeforeUpdate);
         Subcontract testSubcontract = subcontractList.get(subcontractList.size() - 1);
-        assertThat(testSubcontract.getContractId()).isEqualTo(DEFAULT_CONTRACT_ID);
-        assertThat(testSubcontract.getProjectId()).isEqualTo(UPDATED_PROJECT_ID);
         assertThat(testSubcontract.getSubcontractCipher()).isEqualTo(DEFAULT_SUBCONTRACT_CIPHER);
-        assertThat(testSubcontract.getStatusId()).isEqualTo(DEFAULT_STATUS_ID);
+        assertThat(testSubcontract.getStatusId()).isEqualTo(UPDATED_STATUS_ID);
         assertThat(testSubcontract.getCooperationTypeId()).isEqualTo(DEFAULT_COOPERATION_TYPE_ID);
         assertThat(testSubcontract.getSum()).isEqualTo(DEFAULT_SUM);
         assertThat(testSubcontract.getPositions()).isEqualTo(DEFAULT_POSITIONS);
         assertThat(testSubcontract.getCurrencyId()).isEqualTo(DEFAULT_CURRENCY_ID);
         assertThat(testSubcontract.getPaymentTermTypeId()).isEqualTo(DEFAULT_PAYMENT_TERM_TYPE_ID);
-        assertThat(testSubcontract.getPaymentTermId()).isEqualTo(UPDATED_PAYMENT_TERM_ID);
+        assertThat(testSubcontract.getPaymentTermId()).isEqualTo(DEFAULT_PAYMENT_TERM_ID);
         assertThat(testSubcontract.getStartDate()).isEqualTo(DEFAULT_START_DATE);
         assertThat(testSubcontract.getFinishDate()).isEqualTo(UPDATED_FINISH_DATE);
         assertThat(testSubcontract.getTypeId()).isEqualTo(DEFAULT_TYPE_ID);
         assertThat(testSubcontract.getTasktTypeId()).isEqualTo(UPDATED_TASKT_TYPE_ID);
         assertThat(testSubcontract.getTechnologyId()).isEqualTo(DEFAULT_TECHNOLOGY_ID);
-        assertThat(testSubcontract.getDomenId()).isEqualTo(DEFAULT_DOMEN_ID);
-        assertThat(testSubcontract.getLink()).isEqualTo(UPDATED_LINK);
+        assertThat(testSubcontract.getDomenId()).isEqualTo(UPDATED_DOMEN_ID);
+        assertThat(testSubcontract.getLink()).isEqualTo(DEFAULT_LINK);
         assertThat(testSubcontract.getLifecycleStatus()).isEqualTo(DEFAULT_LIFECYCLE_STATUS);
     }
 
@@ -876,8 +805,6 @@ class SubcontractResourceIT {
         partialUpdatedSubcontract.setId(subcontract.getId());
 
         partialUpdatedSubcontract
-            .contractId(UPDATED_CONTRACT_ID)
-            .projectId(UPDATED_PROJECT_ID)
             .subcontractCipher(UPDATED_SUBCONTRACT_CIPHER)
             .statusId(UPDATED_STATUS_ID)
             .cooperationTypeId(UPDATED_COOPERATION_TYPE_ID)
@@ -908,8 +835,6 @@ class SubcontractResourceIT {
         List<Subcontract> subcontractList = subcontractRepository.findAll().collectList().block();
         assertThat(subcontractList).hasSize(databaseSizeBeforeUpdate);
         Subcontract testSubcontract = subcontractList.get(subcontractList.size() - 1);
-        assertThat(testSubcontract.getContractId()).isEqualTo(UPDATED_CONTRACT_ID);
-        assertThat(testSubcontract.getProjectId()).isEqualTo(UPDATED_PROJECT_ID);
         assertThat(testSubcontract.getSubcontractCipher()).isEqualTo(UPDATED_SUBCONTRACT_CIPHER);
         assertThat(testSubcontract.getStatusId()).isEqualTo(UPDATED_STATUS_ID);
         assertThat(testSubcontract.getCooperationTypeId()).isEqualTo(UPDATED_COOPERATION_TYPE_ID);

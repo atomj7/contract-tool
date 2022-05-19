@@ -19,7 +19,6 @@
       },
       "id": "Id",
       "cipher": "Cipher",
-      "clientId": "Client Id",
       "providerId": "Provider Id",
       "typeId": "Type Id",
       "sum": "Sum",
@@ -36,7 +35,6 @@
       "subcontract": "Subcontract",
       "help": {
         "cipher": "Шифр контракта",
-        "clientId": "Айди клиента",
         "providerId": "Справочник поставщиков",
         "typeId": "Тип контракта справочник",
         "sum": "Сумма",

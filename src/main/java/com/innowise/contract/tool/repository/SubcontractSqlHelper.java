@@ -11,8 +11,6 @@ public class SubcontractSqlHelper {
     public static List<Expression> getColumns(Table table, String columnPrefix) {
         List<Expression> columns = new ArrayList<>();
         columns.add(Column.aliased("id", table, columnPrefix + "_id"));
-        columns.add(Column.aliased("contract_id", table, columnPrefix + "_contract_id"));
-        columns.add(Column.aliased("project_id", table, columnPrefix + "_project_id"));
         columns.add(Column.aliased("subcontract_cipher", table, columnPrefix + "_subcontract_cipher"));
         columns.add(Column.aliased("status_id", table, columnPrefix + "_status_id"));
         columns.add(Column.aliased("cooperation_type_id", table, columnPrefix + "_cooperation_type_id"));

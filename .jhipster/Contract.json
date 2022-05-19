@@ -16,12 +16,6 @@
       "javadoc": "Шифр контракта"
     },
     {
-      "fieldName": "clientId",
-      "fieldType": "Long",
-      "fieldValidateRules": ["required"],
-      "javadoc": "Айди клиента"
-    },
-    {
       "fieldName": "providerId",
       "fieldType": "String",
       "fieldValidateRules": ["required"],

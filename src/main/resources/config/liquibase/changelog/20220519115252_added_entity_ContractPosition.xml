@@ -20,9 +20,6 @@
             <column name="employee_id" type="bigint" remarks="Оплачиваемый сотрудник">
                 <constraints nullable="true" />
             </column>
-            <column name="subcontract_id" type="bigint" remarks="Ссылка на субконтракт">
-                <constraints nullable="false" />
-            </column>
             <column name="number_contract_position" type="integer" remarks="Контрактные позиции">
                 <constraints nullable="false" />
             </column>
@@ -70,7 +67,6 @@
             <column name="id" type="numeric"/>
             <column name="contract_position_id" type="string"/>
             <column name="employee_id" type="numeric"/>
-            <column name="subcontract_id" type="numeric"/>
             <column name="number_contract_position" type="numeric"/>
             <column name="restriction_type_id" type="string"/>
             <column name="restriction" type="numeric"/>

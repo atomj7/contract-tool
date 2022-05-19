@@ -13,7 +13,6 @@ public class ContractPositionSqlHelper {
         columns.add(Column.aliased("id", table, columnPrefix + "_id"));
         columns.add(Column.aliased("contract_position_id", table, columnPrefix + "_contract_position_id"));
         columns.add(Column.aliased("employee_id", table, columnPrefix + "_employee_id"));
-        columns.add(Column.aliased("subcontract_id", table, columnPrefix + "_subcontract_id"));
         columns.add(Column.aliased("number_contract_position", table, columnPrefix + "_number_contract_position"));
         columns.add(Column.aliased("restriction_type_id", table, columnPrefix + "_restriction_type_id"));
         columns.add(Column.aliased("restriction", table, columnPrefix + "_restriction"));

@@ -19,20 +19,6 @@ public class SubcontractDTO implements Serializable {
     private Long id;
 
     /**
-     * Ссылка на контракт
-     */
-    @NotNull(message = "must not be null")
-    @Schema(description = "Ссылка на контракт", required = true)
-    private Long contractId;
-
-    /**
-     * Ссылка на проект
-     */
-    @NotNull(message = "must not be null")
-    @Schema(description = "Ссылка на проект", required = true)
-    private Long projectId;
-
-    /**
      * Шифр субконтракта
      */
     @NotNull(message = "must not be null")
@@ -150,22 +136,6 @@ public class SubcontractDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getContractId() {
-        return contractId;
-    }
-
-    public void setContractId(Long contractId) {
-        this.contractId = contractId;
-    }
-
-    public Long getProjectId() {
-        return projectId;
-    }
-
-    public void setProjectId(Long projectId) {
-        this.projectId = projectId;
     }
 
     public String getSubcontractCipher() {
@@ -338,8 +308,6 @@ public class SubcontractDTO implements Serializable {
     public String toString() {
         return "SubcontractDTO{" +
             "id=" + getId() +
-            ", contractId=" + getContractId() +
-            ", projectId=" + getProjectId() +
             ", subcontractCipher='" + getSubcontractCipher() + "'" +
             ", statusId='" + getStatusId() + "'" +
             ", cooperationTypeId='" + getCooperationTypeId() + "'" +

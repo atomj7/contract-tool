@@ -11,7 +11,6 @@ public class ProjectSqlHelper {
     public static List<Expression> getColumns(Table table, String columnPrefix) {
         List<Expression> columns = new ArrayList<>();
         columns.add(Column.aliased("id", table, columnPrefix + "_id"));
-        columns.add(Column.aliased("client_id", table, columnPrefix + "_client_id"));
         columns.add(Column.aliased("name", table, columnPrefix + "_name"));
         columns.add(Column.aliased("start_date", table, columnPrefix + "_start_date"));
         columns.add(Column.aliased("finish_date", table, columnPrefix + "_finish_date"));

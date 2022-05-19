@@ -41,9 +41,6 @@ class ContractPositionResourceIT {
     private static final Long DEFAULT_EMPLOYEE_ID = 1L;
     private static final Long UPDATED_EMPLOYEE_ID = 2L;
 
-    private static final Long DEFAULT_SUBCONTRACT_ID = 1L;
-    private static final Long UPDATED_SUBCONTRACT_ID = 2L;
-
     private static final Integer DEFAULT_NUMBER_CONTRACT_POSITION = 1;
     private static final Integer UPDATED_NUMBER_CONTRACT_POSITION = 2;
 
@@ -95,7 +92,6 @@ class ContractPositionResourceIT {
         ContractPosition contractPosition = new ContractPosition()
             .contractPositionId(DEFAULT_CONTRACT_POSITION_ID)
             .employeeId(DEFAULT_EMPLOYEE_ID)
-            .subcontractId(DEFAULT_SUBCONTRACT_ID)
             .numberContractPosition(DEFAULT_NUMBER_CONTRACT_POSITION)
             .restrictionTypeId(DEFAULT_RESTRICTION_TYPE_ID)
             .restriction(DEFAULT_RESTRICTION)
@@ -116,7 +112,6 @@ class ContractPositionResourceIT {
         ContractPosition contractPosition = new ContractPosition()
             .contractPositionId(UPDATED_CONTRACT_POSITION_ID)
             .employeeId(UPDATED_EMPLOYEE_ID)
-            .subcontractId(UPDATED_SUBCONTRACT_ID)
             .numberContractPosition(UPDATED_NUMBER_CONTRACT_POSITION)
             .restrictionTypeId(UPDATED_RESTRICTION_TYPE_ID)
             .restriction(UPDATED_RESTRICTION)
@@ -166,7 +161,6 @@ class ContractPositionResourceIT {
         ContractPosition testContractPosition = contractPositionList.get(contractPositionList.size() - 1);
         assertThat(testContractPosition.getContractPositionId()).isEqualTo(DEFAULT_CONTRACT_POSITION_ID);
         assertThat(testContractPosition.getEmployeeId()).isEqualTo(DEFAULT_EMPLOYEE_ID);
-        assertThat(testContractPosition.getSubcontractId()).isEqualTo(DEFAULT_SUBCONTRACT_ID);
         assertThat(testContractPosition.getNumberContractPosition()).isEqualTo(DEFAULT_NUMBER_CONTRACT_POSITION);
         assertThat(testContractPosition.getRestrictionTypeId()).isEqualTo(DEFAULT_RESTRICTION_TYPE_ID);
         assertThat(testContractPosition.getRestriction()).isEqualTo(DEFAULT_RESTRICTION);
@@ -204,28 +198,6 @@ class ContractPositionResourceIT {
         int databaseSizeBeforeTest = contractPositionRepository.findAll().collectList().block().size();
         // set the field null
         contractPosition.setContractPositionId(null);
-
-        // Create the ContractPosition, which fails.
-        ContractPositionDTO contractPositionDTO = contractPositionMapper.toDto(contractPosition);
-
-        webTestClient
-            .post()
-            .uri(ENTITY_API_URL)
-            .contentType(MediaType.APPLICATION_JSON)
-            .bodyValue(TestUtil.convertObjectToJsonBytes(contractPositionDTO))
-            .exchange()
-            .expectStatus()
-            .isBadRequest();
-
-        List<ContractPosition> contractPositionList = contractPositionRepository.findAll().collectList().block();
-        assertThat(contractPositionList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    void checkSubcontractIdIsRequired() throws Exception {
-        int databaseSizeBeforeTest = contractPositionRepository.findAll().collectList().block().size();
-        // set the field null
-        contractPosition.setSubcontractId(null);
 
         // Create the ContractPosition, which fails.
         ContractPositionDTO contractPositionDTO = contractPositionMapper.toDto(contractPosition);
@@ -397,8 +369,6 @@ class ContractPositionResourceIT {
             .value(hasItem(DEFAULT_CONTRACT_POSITION_ID))
             .jsonPath("$.[*].employeeId")
             .value(hasItem(DEFAULT_EMPLOYEE_ID.intValue()))
-            .jsonPath("$.[*].subcontractId")
-            .value(hasItem(DEFAULT_SUBCONTRACT_ID.intValue()))
             .jsonPath("$.[*].numberContractPosition")
             .value(hasItem(DEFAULT_NUMBER_CONTRACT_POSITION))
             .jsonPath("$.[*].restrictionTypeId")
@@ -437,8 +407,6 @@ class ContractPositionResourceIT {
             .value(is(DEFAULT_CONTRACT_POSITION_ID))
             .jsonPath("$.employeeId")
             .value(is(DEFAULT_EMPLOYEE_ID.intValue()))
-            .jsonPath("$.subcontractId")
-            .value(is(DEFAULT_SUBCONTRACT_ID.intValue()))
             .jsonPath("$.numberContractPosition")
             .value(is(DEFAULT_NUMBER_CONTRACT_POSITION))
             .jsonPath("$.restrictionTypeId")
@@ -479,7 +447,6 @@ class ContractPositionResourceIT {
         updatedContractPosition
             .contractPositionId(UPDATED_CONTRACT_POSITION_ID)
             .employeeId(UPDATED_EMPLOYEE_ID)
-            .subcontractId(UPDATED_SUBCONTRACT_ID)
             .numberContractPosition(UPDATED_NUMBER_CONTRACT_POSITION)
             .restrictionTypeId(UPDATED_RESTRICTION_TYPE_ID)
             .restriction(UPDATED_RESTRICTION)
@@ -504,7 +471,6 @@ class ContractPositionResourceIT {
         ContractPosition testContractPosition = contractPositionList.get(contractPositionList.size() - 1);
         assertThat(testContractPosition.getContractPositionId()).isEqualTo(UPDATED_CONTRACT_POSITION_ID);
         assertThat(testContractPosition.getEmployeeId()).isEqualTo(UPDATED_EMPLOYEE_ID);
-        assertThat(testContractPosition.getSubcontractId()).isEqualTo(UPDATED_SUBCONTRACT_ID);
         assertThat(testContractPosition.getNumberContractPosition()).isEqualTo(UPDATED_NUMBER_CONTRACT_POSITION);
         assertThat(testContractPosition.getRestrictionTypeId()).isEqualTo(UPDATED_RESTRICTION_TYPE_ID);
         assertThat(testContractPosition.getRestriction()).isEqualTo(UPDATED_RESTRICTION);
@@ -595,12 +561,12 @@ class ContractPositionResourceIT {
         partialUpdatedContractPosition.setId(contractPosition.getId());
 
         partialUpdatedContractPosition
-            .subcontractId(UPDATED_SUBCONTRACT_ID)
             .numberContractPosition(UPDATED_NUMBER_CONTRACT_POSITION)
             .restrictionTypeId(UPDATED_RESTRICTION_TYPE_ID)
-            .currencyId(UPDATED_CURRENCY_ID)
+            .restriction(UPDATED_RESTRICTION)
             .rateAnHour(UPDATED_RATE_AN_HOUR)
-            .statusId(UPDATED_STATUS_ID);
+            .statusId(UPDATED_STATUS_ID)
+            .lifecycleStatus(UPDATED_LIFECYCLE_STATUS);
 
         webTestClient
             .patch()
@@ -617,14 +583,13 @@ class ContractPositionResourceIT {
         ContractPosition testContractPosition = contractPositionList.get(contractPositionList.size() - 1);
         assertThat(testContractPosition.getContractPositionId()).isEqualTo(DEFAULT_CONTRACT_POSITION_ID);
         assertThat(testContractPosition.getEmployeeId()).isEqualTo(DEFAULT_EMPLOYEE_ID);
-        assertThat(testContractPosition.getSubcontractId()).isEqualTo(UPDATED_SUBCONTRACT_ID);
         assertThat(testContractPosition.getNumberContractPosition()).isEqualTo(UPDATED_NUMBER_CONTRACT_POSITION);
         assertThat(testContractPosition.getRestrictionTypeId()).isEqualTo(UPDATED_RESTRICTION_TYPE_ID);
-        assertThat(testContractPosition.getRestriction()).isEqualTo(DEFAULT_RESTRICTION);
-        assertThat(testContractPosition.getCurrencyId()).isEqualTo(UPDATED_CURRENCY_ID);
+        assertThat(testContractPosition.getRestriction()).isEqualTo(UPDATED_RESTRICTION);
+        assertThat(testContractPosition.getCurrencyId()).isEqualTo(DEFAULT_CURRENCY_ID);
         assertThat(testContractPosition.getRateAnHour()).isEqualTo(UPDATED_RATE_AN_HOUR);
         assertThat(testContractPosition.getStatusId()).isEqualTo(UPDATED_STATUS_ID);
-        assertThat(testContractPosition.getLifecycleStatus()).isEqualTo(DEFAULT_LIFECYCLE_STATUS);
+        assertThat(testContractPosition.getLifecycleStatus()).isEqualTo(UPDATED_LIFECYCLE_STATUS);
     }
 
     @Test
@@ -641,7 +606,6 @@ class ContractPositionResourceIT {
         partialUpdatedContractPosition
             .contractPositionId(UPDATED_CONTRACT_POSITION_ID)
             .employeeId(UPDATED_EMPLOYEE_ID)
-            .subcontractId(UPDATED_SUBCONTRACT_ID)
             .numberContractPosition(UPDATED_NUMBER_CONTRACT_POSITION)
             .restrictionTypeId(UPDATED_RESTRICTION_TYPE_ID)
             .restriction(UPDATED_RESTRICTION)
@@ -665,7 +629,6 @@ class ContractPositionResourceIT {
         ContractPosition testContractPosition = contractPositionList.get(contractPositionList.size() - 1);
         assertThat(testContractPosition.getContractPositionId()).isEqualTo(UPDATED_CONTRACT_POSITION_ID);
         assertThat(testContractPosition.getEmployeeId()).isEqualTo(UPDATED_EMPLOYEE_ID);
-        assertThat(testContractPosition.getSubcontractId()).isEqualTo(UPDATED_SUBCONTRACT_ID);
         assertThat(testContractPosition.getNumberContractPosition()).isEqualTo(UPDATED_NUMBER_CONTRACT_POSITION);
         assertThat(testContractPosition.getRestrictionTypeId()).isEqualTo(UPDATED_RESTRICTION_TYPE_ID);
         assertThat(testContractPosition.getRestriction()).isEqualTo(UPDATED_RESTRICTION);

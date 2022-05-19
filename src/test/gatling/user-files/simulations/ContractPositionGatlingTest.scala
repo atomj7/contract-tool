@@ -73,7 +73,6 @@ class ContractPositionGatlingTest extends Simulation {
             .body(StringBody("""{
                 "contractPositionId":"SAMPLE_TEXT"
                 , "employeeId":"0"
-                , "subcontractId":"0"
                 , "numberContractPosition":"0"
                 , "restrictionTypeId":"SAMPLE_TEXT"
                 , "restriction":"0"
