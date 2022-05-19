@@ -114,6 +114,19 @@
   "name": "Client",
   "pagination": "pagination",
   "readOnly": false,
-  "relationships": [],
+  "relationships": [
+    {
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "project",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "contract",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "contract",
+      "relationshipType": "one-to-many"
+    }
+  ],
   "service": "serviceClass"
 }

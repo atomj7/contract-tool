@@ -26,6 +26,7 @@
       "statusId": "Status Id",
       "lifecycleStatus": "Lifecycle Status",
       "client": "Client",
+      "subcontract": "Subcontract",
       "help": {
         "clientId": "Клиент",
         "name": "Название проекта",

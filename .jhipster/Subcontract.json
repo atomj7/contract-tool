@@ -133,6 +133,12 @@
       "otherEntityRelationshipName": "subcontract",
       "relationshipName": "project",
       "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "contractPosition",
+      "otherEntityRelationshipName": "subcontract",
+      "relationshipName": "contractPosition",
+      "relationshipType": "one-to-many"
     }
   ],
   "service": "serviceClass"

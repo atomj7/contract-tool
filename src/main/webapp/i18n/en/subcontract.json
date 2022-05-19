@@ -38,6 +38,7 @@
       "lifecycleStatus": "Lifecycle Status",
       "contract": "Contract",
       "project": "Project",
+      "contractPosition": "Contract Position",
       "help": {
         "id": "ПК",
         "contractId": "Ссылка на контракт",
