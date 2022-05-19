@@ -72,7 +72,6 @@ class ContractGatlingTest extends Simulation {
             .headers(headers_http_authenticated)
             .body(StringBody("""{
                 "cipher":"SAMPLE_TEXT"
-                , "clientId":"0"
                 , "providerId":"SAMPLE_TEXT"
                 , "typeId":"SAMPLE_TEXT"
                 , "sum":"0"

@@ -27,8 +27,6 @@ public class SubcontractRowMapper implements BiFunction<Row, String, Subcontract
     public Subcontract apply(Row row, String prefix) {
         Subcontract entity = new Subcontract();
         entity.setId(converter.fromRow(row, prefix + "_id", Long.class));
-        entity.setContractId(converter.fromRow(row, prefix + "_contract_id", Long.class));
-        entity.setProjectId(converter.fromRow(row, prefix + "_project_id", Long.class));
         entity.setSubcontractCipher(converter.fromRow(row, prefix + "_subcontract_cipher", String.class));
         entity.setStatusId(converter.fromRow(row, prefix + "_status_id", String.class));
         entity.setCooperationTypeId(converter.fromRow(row, prefix + "_cooperation_type_id", String.class));

@@ -6,8 +6,6 @@ import { LifecycleStatus } from 'app/shared/model/enumerations/lifecycle-status.
 
 export interface ISubcontract {
   id?: number;
-  contractId?: number;
-  projectId?: number;
   subcontractCipher?: string;
   statusId?: string;
   cooperationTypeId?: string;

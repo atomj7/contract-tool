@@ -27,7 +27,6 @@ public class ProjectRowMapper implements BiFunction<Row, String, Project> {
     public Project apply(Row row, String prefix) {
         Project entity = new Project();
         entity.setId(converter.fromRow(row, prefix + "_id", Long.class));
-        entity.setClientId(converter.fromRow(row, prefix + "_client_id", Long.class));
         entity.setName(converter.fromRow(row, prefix + "_name", String.class));
         entity.setStartDate(converter.fromRow(row, prefix + "_start_date", LocalDate.class));
         entity.setFinishDate(converter.fromRow(row, prefix + "_finish_date", LocalDate.class));

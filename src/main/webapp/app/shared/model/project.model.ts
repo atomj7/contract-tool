@@ -5,7 +5,6 @@ import { LifecycleStatus } from 'app/shared/model/enumerations/lifecycle-status.
 
 export interface IProject {
   id?: number;
-  clientId?: number;
   name?: string;
   startDate?: string;
   finishDate?: string | null;

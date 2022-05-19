@@ -107,20 +107,6 @@ export const ContractUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 <Translate contentKey="contractToolApp.contract.help.cipher" />
               </UncontrolledTooltip>
               <ValidatedField
-                label={translate('contractToolApp.contract.clientId')}
-                id="contract-clientId"
-                name="clientId"
-                data-cy="clientId"
-                type="text"
-                validate={{
-                  required: { value: true, message: translate('entity.validation.required') },
-                  validate: v => isNumber(v) || translate('entity.validation.number'),
-                }}
-              />
-              <UncontrolledTooltip target="clientIdLabel">
-                <Translate contentKey="contractToolApp.contract.help.clientId" />
-              </UncontrolledTooltip>
-              <ValidatedField
                 label={translate('contractToolApp.contract.providerId')}
                 id="contract-providerId"
                 name="providerId"

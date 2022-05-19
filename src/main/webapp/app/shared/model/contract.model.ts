@@ -6,7 +6,6 @@ import { LifecycleStatus } from 'app/shared/model/enumerations/lifecycle-status.
 export interface IContract {
   id?: number;
   cipher?: string;
-  clientId?: number;
   providerId?: string;
   typeId?: string | null;
   sum?: number;

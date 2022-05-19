@@ -40,9 +40,6 @@ class ContractResourceIT {
     private static final String DEFAULT_CIPHER = "AAAAAAAAAA";
     private static final String UPDATED_CIPHER = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_CLIENT_ID = 1L;
-    private static final Long UPDATED_CLIENT_ID = 2L;
-
     private static final String DEFAULT_PROVIDER_ID = "AAAAAAAAAA";
     private static final String UPDATED_PROVIDER_ID = "BBBBBBBBBB";
 
@@ -108,7 +105,6 @@ class ContractResourceIT {
     public static Contract createEntity(EntityManager em) {
         Contract contract = new Contract()
             .cipher(DEFAULT_CIPHER)
-            .clientId(DEFAULT_CLIENT_ID)
             .providerId(DEFAULT_PROVIDER_ID)
             .typeId(DEFAULT_TYPE_ID)
             .sum(DEFAULT_SUM)
@@ -133,7 +129,6 @@ class ContractResourceIT {
     public static Contract createUpdatedEntity(EntityManager em) {
         Contract contract = new Contract()
             .cipher(UPDATED_CIPHER)
-            .clientId(UPDATED_CLIENT_ID)
             .providerId(UPDATED_PROVIDER_ID)
             .typeId(UPDATED_TYPE_ID)
             .sum(UPDATED_SUM)
@@ -187,7 +182,6 @@ class ContractResourceIT {
         assertThat(contractList).hasSize(databaseSizeBeforeCreate + 1);
         Contract testContract = contractList.get(contractList.size() - 1);
         assertThat(testContract.getCipher()).isEqualTo(DEFAULT_CIPHER);
-        assertThat(testContract.getClientId()).isEqualTo(DEFAULT_CLIENT_ID);
         assertThat(testContract.getProviderId()).isEqualTo(DEFAULT_PROVIDER_ID);
         assertThat(testContract.getTypeId()).isEqualTo(DEFAULT_TYPE_ID);
         assertThat(testContract.getSum()).isEqualTo(DEFAULT_SUM);
@@ -230,28 +224,6 @@ class ContractResourceIT {
         int databaseSizeBeforeTest = contractRepository.findAll().collectList().block().size();
         // set the field null
         contract.setCipher(null);
-
-        // Create the Contract, which fails.
-        ContractDTO contractDTO = contractMapper.toDto(contract);
-
-        webTestClient
-            .post()
-            .uri(ENTITY_API_URL)
-            .contentType(MediaType.APPLICATION_JSON)
-            .bodyValue(TestUtil.convertObjectToJsonBytes(contractDTO))
-            .exchange()
-            .expectStatus()
-            .isBadRequest();
-
-        List<Contract> contractList = contractRepository.findAll().collectList().block();
-        assertThat(contractList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    void checkClientIdIsRequired() throws Exception {
-        int databaseSizeBeforeTest = contractRepository.findAll().collectList().block().size();
-        // set the field null
-        contract.setClientId(null);
 
         // Create the Contract, which fails.
         ContractDTO contractDTO = contractMapper.toDto(contract);
@@ -487,8 +459,6 @@ class ContractResourceIT {
             .value(hasItem(contract.getId().intValue()))
             .jsonPath("$.[*].cipher")
             .value(hasItem(DEFAULT_CIPHER))
-            .jsonPath("$.[*].clientId")
-            .value(hasItem(DEFAULT_CLIENT_ID.intValue()))
             .jsonPath("$.[*].providerId")
             .value(hasItem(DEFAULT_PROVIDER_ID))
             .jsonPath("$.[*].typeId")
@@ -535,8 +505,6 @@ class ContractResourceIT {
             .value(is(contract.getId().intValue()))
             .jsonPath("$.cipher")
             .value(is(DEFAULT_CIPHER))
-            .jsonPath("$.clientId")
-            .value(is(DEFAULT_CLIENT_ID.intValue()))
             .jsonPath("$.providerId")
             .value(is(DEFAULT_PROVIDER_ID))
             .jsonPath("$.typeId")
@@ -586,7 +554,6 @@ class ContractResourceIT {
         Contract updatedContract = contractRepository.findById(contract.getId()).block();
         updatedContract
             .cipher(UPDATED_CIPHER)
-            .clientId(UPDATED_CLIENT_ID)
             .providerId(UPDATED_PROVIDER_ID)
             .typeId(UPDATED_TYPE_ID)
             .sum(UPDATED_SUM)
@@ -615,7 +582,6 @@ class ContractResourceIT {
         assertThat(contractList).hasSize(databaseSizeBeforeUpdate);
         Contract testContract = contractList.get(contractList.size() - 1);
         assertThat(testContract.getCipher()).isEqualTo(UPDATED_CIPHER);
-        assertThat(testContract.getClientId()).isEqualTo(UPDATED_CLIENT_ID);
         assertThat(testContract.getProviderId()).isEqualTo(UPDATED_PROVIDER_ID);
         assertThat(testContract.getTypeId()).isEqualTo(UPDATED_TYPE_ID);
         assertThat(testContract.getSum()).isEqualTo(UPDATED_SUM);
@@ -711,11 +677,10 @@ class ContractResourceIT {
         partialUpdatedContract.setId(contract.getId());
 
         partialUpdatedContract
-            .clientId(UPDATED_CLIENT_ID)
             .providerId(UPDATED_PROVIDER_ID)
-            .positionCount(UPDATED_POSITION_COUNT)
-            .paymentTermTypeId(UPDATED_PAYMENT_TERM_TYPE_ID)
-            .statusId(UPDATED_STATUS_ID)
+            .typeId(UPDATED_TYPE_ID)
+            .currencyId(UPDATED_CURRENCY_ID)
+            .startDate(UPDATED_START_DATE)
             .link(UPDATED_LINK)
             .lifecycleStatus(UPDATED_LIFECYCLE_STATUS);
 
@@ -733,17 +698,16 @@ class ContractResourceIT {
         assertThat(contractList).hasSize(databaseSizeBeforeUpdate);
         Contract testContract = contractList.get(contractList.size() - 1);
         assertThat(testContract.getCipher()).isEqualTo(DEFAULT_CIPHER);
-        assertThat(testContract.getClientId()).isEqualTo(UPDATED_CLIENT_ID);
         assertThat(testContract.getProviderId()).isEqualTo(UPDATED_PROVIDER_ID);
-        assertThat(testContract.getTypeId()).isEqualTo(DEFAULT_TYPE_ID);
+        assertThat(testContract.getTypeId()).isEqualTo(UPDATED_TYPE_ID);
         assertThat(testContract.getSum()).isEqualTo(DEFAULT_SUM);
-        assertThat(testContract.getPositionCount()).isEqualTo(UPDATED_POSITION_COUNT);
-        assertThat(testContract.getCurrencyId()).isEqualTo(DEFAULT_CURRENCY_ID);
+        assertThat(testContract.getPositionCount()).isEqualTo(DEFAULT_POSITION_COUNT);
+        assertThat(testContract.getCurrencyId()).isEqualTo(UPDATED_CURRENCY_ID);
         assertThat(testContract.getPaymentTerm()).isEqualTo(DEFAULT_PAYMENT_TERM);
-        assertThat(testContract.getPaymentTermTypeId()).isEqualTo(UPDATED_PAYMENT_TERM_TYPE_ID);
-        assertThat(testContract.getStartDate()).isEqualTo(DEFAULT_START_DATE);
+        assertThat(testContract.getPaymentTermTypeId()).isEqualTo(DEFAULT_PAYMENT_TERM_TYPE_ID);
+        assertThat(testContract.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testContract.getFinishDate()).isEqualTo(DEFAULT_FINISH_DATE);
-        assertThat(testContract.getStatusId()).isEqualTo(UPDATED_STATUS_ID);
+        assertThat(testContract.getStatusId()).isEqualTo(DEFAULT_STATUS_ID);
         assertThat(testContract.getLink()).isEqualTo(UPDATED_LINK);
         assertThat(testContract.getLifecycleStatus()).isEqualTo(UPDATED_LIFECYCLE_STATUS);
     }
@@ -761,7 +725,6 @@ class ContractResourceIT {
 
         partialUpdatedContract
             .cipher(UPDATED_CIPHER)
-            .clientId(UPDATED_CLIENT_ID)
             .providerId(UPDATED_PROVIDER_ID)
             .typeId(UPDATED_TYPE_ID)
             .sum(UPDATED_SUM)
@@ -789,7 +752,6 @@ class ContractResourceIT {
         assertThat(contractList).hasSize(databaseSizeBeforeUpdate);
         Contract testContract = contractList.get(contractList.size() - 1);
         assertThat(testContract.getCipher()).isEqualTo(UPDATED_CIPHER);
-        assertThat(testContract.getClientId()).isEqualTo(UPDATED_CLIENT_ID);
         assertThat(testContract.getProviderId()).isEqualTo(UPDATED_PROVIDER_ID);
         assertThat(testContract.getTypeId()).isEqualTo(UPDATED_TYPE_ID);
         assertThat(testContract.getSum()).isEqualTo(UPDATED_SUM);

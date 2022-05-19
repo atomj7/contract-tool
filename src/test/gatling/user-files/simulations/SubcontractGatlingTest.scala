@@ -71,9 +71,7 @@ class SubcontractGatlingTest extends Simulation {
             .post("/api/subcontracts")
             .headers(headers_http_authenticated)
             .body(StringBody("""{
-                "contractId":"0"
-                , "projectId":"0"
-                , "subcontractCipher":"SAMPLE_TEXT"
+                "subcontractCipher":"SAMPLE_TEXT"
                 , "statusId":"SAMPLE_TEXT"
                 , "cooperationTypeId":"SAMPLE_TEXT"
                 , "sum":"0"

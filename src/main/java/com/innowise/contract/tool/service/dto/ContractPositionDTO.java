@@ -32,13 +32,6 @@ public class ContractPositionDTO implements Serializable {
     private Long employeeId;
 
     /**
-     * Ссылка на субконтракт
-     */
-    @NotNull(message = "must not be null")
-    @Schema(description = "Ссылка на субконтракт", required = true)
-    private Long subcontractId;
-
-    /**
      * Контрактные позиции
      */
     @NotNull(message = "must not be null")
@@ -110,14 +103,6 @@ public class ContractPositionDTO implements Serializable {
 
     public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
-    }
-
-    public Long getSubcontractId() {
-        return subcontractId;
-    }
-
-    public void setSubcontractId(Long subcontractId) {
-        this.subcontractId = subcontractId;
     }
 
     public Integer getNumberContractPosition() {
@@ -212,7 +197,6 @@ public class ContractPositionDTO implements Serializable {
             "id=" + getId() +
             ", contractPositionId='" + getContractPositionId() + "'" +
             ", employeeId=" + getEmployeeId() +
-            ", subcontractId=" + getSubcontractId() +
             ", numberContractPosition=" + getNumberContractPosition() +
             ", restrictionTypeId='" + getRestrictionTypeId() + "'" +
             ", restriction=" + getRestriction() +

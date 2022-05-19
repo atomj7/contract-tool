@@ -18,7 +18,6 @@
         "title": "Project"
       },
       "id": "Id",
-      "clientId": "Client Id",
       "name": "Name",
       "startDate": "Start Date",
       "finishDate": "Finish Date",
@@ -28,7 +27,6 @@
       "client": "Client",
       "subcontract": "Subcontract",
       "help": {
-        "clientId": "Клиент",
         "name": "Название проекта",
         "startDate": "Дата начала",
         "finishDate": "Дата окончания",

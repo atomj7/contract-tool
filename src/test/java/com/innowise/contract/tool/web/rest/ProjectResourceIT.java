@@ -37,9 +37,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 @WithMockUser
 class ProjectResourceIT {
 
-    private static final Long DEFAULT_CLIENT_ID = 1L;
-    private static final Long UPDATED_CLIENT_ID = 2L;
-
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
@@ -86,7 +83,6 @@ class ProjectResourceIT {
      */
     public static Project createEntity(EntityManager em) {
         Project project = new Project()
-            .clientId(DEFAULT_CLIENT_ID)
             .name(DEFAULT_NAME)
             .startDate(DEFAULT_START_DATE)
             .finishDate(DEFAULT_FINISH_DATE)
@@ -104,7 +100,6 @@ class ProjectResourceIT {
      */
     public static Project createUpdatedEntity(EntityManager em) {
         Project project = new Project()
-            .clientId(UPDATED_CLIENT_ID)
             .name(UPDATED_NAME)
             .startDate(UPDATED_START_DATE)
             .finishDate(UPDATED_FINISH_DATE)
@@ -151,7 +146,6 @@ class ProjectResourceIT {
         List<Project> projectList = projectRepository.findAll().collectList().block();
         assertThat(projectList).hasSize(databaseSizeBeforeCreate + 1);
         Project testProject = projectList.get(projectList.size() - 1);
-        assertThat(testProject.getClientId()).isEqualTo(DEFAULT_CLIENT_ID);
         assertThat(testProject.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testProject.getStartDate()).isEqualTo(DEFAULT_START_DATE);
         assertThat(testProject.getFinishDate()).isEqualTo(DEFAULT_FINISH_DATE);
@@ -181,28 +175,6 @@ class ProjectResourceIT {
         // Validate the Project in the database
         List<Project> projectList = projectRepository.findAll().collectList().block();
         assertThat(projectList).hasSize(databaseSizeBeforeCreate);
-    }
-
-    @Test
-    void checkClientIdIsRequired() throws Exception {
-        int databaseSizeBeforeTest = projectRepository.findAll().collectList().block().size();
-        // set the field null
-        project.setClientId(null);
-
-        // Create the Project, which fails.
-        ProjectDTO projectDTO = projectMapper.toDto(project);
-
-        webTestClient
-            .post()
-            .uri(ENTITY_API_URL)
-            .contentType(MediaType.APPLICATION_JSON)
-            .bodyValue(TestUtil.convertObjectToJsonBytes(projectDTO))
-            .exchange()
-            .expectStatus()
-            .isBadRequest();
-
-        List<Project> projectList = projectRepository.findAll().collectList().block();
-        assertThat(projectList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -273,7 +245,6 @@ class ProjectResourceIT {
         assertThat(projectList).isNotNull();
         assertThat(projectList).hasSize(1);
         Project testProject = projectList.get(0);
-        assertThat(testProject.getClientId()).isEqualTo(DEFAULT_CLIENT_ID);
         assertThat(testProject.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testProject.getStartDate()).isEqualTo(DEFAULT_START_DATE);
         assertThat(testProject.getFinishDate()).isEqualTo(DEFAULT_FINISH_DATE);
@@ -300,8 +271,6 @@ class ProjectResourceIT {
             .expectBody()
             .jsonPath("$.[*].id")
             .value(hasItem(project.getId().intValue()))
-            .jsonPath("$.[*].clientId")
-            .value(hasItem(DEFAULT_CLIENT_ID.intValue()))
             .jsonPath("$.[*].name")
             .value(hasItem(DEFAULT_NAME))
             .jsonPath("$.[*].startDate")
@@ -334,8 +303,6 @@ class ProjectResourceIT {
             .expectBody()
             .jsonPath("$.id")
             .value(is(project.getId().intValue()))
-            .jsonPath("$.clientId")
-            .value(is(DEFAULT_CLIENT_ID.intValue()))
             .jsonPath("$.name")
             .value(is(DEFAULT_NAME))
             .jsonPath("$.startDate")
@@ -372,7 +339,6 @@ class ProjectResourceIT {
         // Update the project
         Project updatedProject = projectRepository.findById(project.getId()).block();
         updatedProject
-            .clientId(UPDATED_CLIENT_ID)
             .name(UPDATED_NAME)
             .startDate(UPDATED_START_DATE)
             .finishDate(UPDATED_FINISH_DATE)
@@ -394,7 +360,6 @@ class ProjectResourceIT {
         List<Project> projectList = projectRepository.findAll().collectList().block();
         assertThat(projectList).hasSize(databaseSizeBeforeUpdate);
         Project testProject = projectList.get(projectList.size() - 1);
-        assertThat(testProject.getClientId()).isEqualTo(UPDATED_CLIENT_ID);
         assertThat(testProject.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testProject.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testProject.getFinishDate()).isEqualTo(UPDATED_FINISH_DATE);
@@ -483,11 +448,7 @@ class ProjectResourceIT {
         Project partialUpdatedProject = new Project();
         partialUpdatedProject.setId(project.getId());
 
-        partialUpdatedProject
-            .clientId(UPDATED_CLIENT_ID)
-            .finishDate(UPDATED_FINISH_DATE)
-            .link(UPDATED_LINK)
-            .lifecycleStatus(UPDATED_LIFECYCLE_STATUS);
+        partialUpdatedProject.name(UPDATED_NAME).link(UPDATED_LINK).statusId(UPDATED_STATUS_ID);
 
         webTestClient
             .patch()
@@ -502,13 +463,12 @@ class ProjectResourceIT {
         List<Project> projectList = projectRepository.findAll().collectList().block();
         assertThat(projectList).hasSize(databaseSizeBeforeUpdate);
         Project testProject = projectList.get(projectList.size() - 1);
-        assertThat(testProject.getClientId()).isEqualTo(UPDATED_CLIENT_ID);
-        assertThat(testProject.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testProject.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testProject.getStartDate()).isEqualTo(DEFAULT_START_DATE);
-        assertThat(testProject.getFinishDate()).isEqualTo(UPDATED_FINISH_DATE);
+        assertThat(testProject.getFinishDate()).isEqualTo(DEFAULT_FINISH_DATE);
         assertThat(testProject.getLink()).isEqualTo(UPDATED_LINK);
-        assertThat(testProject.getStatusId()).isEqualTo(DEFAULT_STATUS_ID);
-        assertThat(testProject.getLifecycleStatus()).isEqualTo(UPDATED_LIFECYCLE_STATUS);
+        assertThat(testProject.getStatusId()).isEqualTo(UPDATED_STATUS_ID);
+        assertThat(testProject.getLifecycleStatus()).isEqualTo(DEFAULT_LIFECYCLE_STATUS);
     }
 
     @Test
@@ -523,7 +483,6 @@ class ProjectResourceIT {
         partialUpdatedProject.setId(project.getId());
 
         partialUpdatedProject
-            .clientId(UPDATED_CLIENT_ID)
             .name(UPDATED_NAME)
             .startDate(UPDATED_START_DATE)
             .finishDate(UPDATED_FINISH_DATE)
@@ -544,7 +503,6 @@ class ProjectResourceIT {
         List<Project> projectList = projectRepository.findAll().collectList().block();
         assertThat(projectList).hasSize(databaseSizeBeforeUpdate);
         Project testProject = projectList.get(projectList.size() - 1);
-        assertThat(testProject.getClientId()).isEqualTo(UPDATED_CLIENT_ID);
         assertThat(testProject.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testProject.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testProject.getFinishDate()).isEqualTo(UPDATED_FINISH_DATE);

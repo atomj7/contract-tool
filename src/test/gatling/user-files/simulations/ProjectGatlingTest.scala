@@ -71,8 +71,7 @@ class ProjectGatlingTest extends Simulation {
             .post("/api/projects")
             .headers(headers_http_authenticated)
             .body(StringBody("""{
-                "clientId":"0"
-                , "name":"SAMPLE_TEXT"
+                "name":"SAMPLE_TEXT"
                 , "startDate":"2020-01-01T00:00:00.000Z"
                 , "finishDate":"2020-01-01T00:00:00.000Z"
                 , "link":"SAMPLE_TEXT"

@@ -51,9 +51,6 @@ export const Project = (props: RouteComponentProps<{ url: string }>) => {
                   <Translate contentKey="contractToolApp.project.id">Id</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="contractToolApp.project.clientId">Client Id</Translate>
-                </th>
-                <th>
                   <Translate contentKey="contractToolApp.project.name">Name</Translate>
                 </th>
                 <th>
@@ -85,7 +82,6 @@ export const Project = (props: RouteComponentProps<{ url: string }>) => {
                       {project.id}
                     </Button>
                   </td>
-                  <td>{project.clientId}</td>
                   <td>{project.name}</td>
                   <td>{project.startDate ? <TextFormat type="date" value={project.startDate} format={APP_LOCAL_DATE_FORMAT} /> : null}</td>
                   <td>

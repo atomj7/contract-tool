@@ -31,15 +31,6 @@ export const ProjectDetail = (props: RouteComponentProps<{ id: string }>) => {
           </dt>
           <dd>{projectEntity.id}</dd>
           <dt>
-            <span id="clientId">
-              <Translate contentKey="contractToolApp.project.clientId">Client Id</Translate>
-            </span>
-            <UncontrolledTooltip target="clientId">
-              <Translate contentKey="contractToolApp.project.help.clientId" />
-            </UncontrolledTooltip>
-          </dt>
-          <dd>{projectEntity.clientId}</dd>
-          <dt>
             <span id="name">
               <Translate contentKey="contractToolApp.project.name">Name</Translate>
             </span>

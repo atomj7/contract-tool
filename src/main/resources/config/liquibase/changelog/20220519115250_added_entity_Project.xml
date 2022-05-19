@@ -14,9 +14,6 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="client_id" type="bigint" remarks="Клиент">
-                <constraints nullable="false" />
-            </column>
             <column name="name" type="varchar(255)" remarks="Название проекта">
                 <constraints nullable="false" />
             </column>
@@ -59,7 +56,6 @@
                   tableName="project"
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
-            <column name="client_id" type="numeric"/>
             <column name="name" type="string"/>
             <column name="start_date" type="date"/>
             <column name="finish_date" type="date"/>

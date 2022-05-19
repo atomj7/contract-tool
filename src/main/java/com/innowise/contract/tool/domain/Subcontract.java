@@ -28,20 +28,6 @@ public class Subcontract implements Serializable {
     private Long id;
 
     /**
-     * Ссылка на контракт
-     */
-    @NotNull(message = "must not be null")
-    @Column("contract_id")
-    private Long contractId;
-
-    /**
-     * Ссылка на проект
-     */
-    @NotNull(message = "must not be null")
-    @Column("project_id")
-    private Long projectId;
-
-    /**
      * Шифр субконтракта
      */
     @NotNull(message = "must not be null")
@@ -180,32 +166,6 @@ public class Subcontract implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getContractId() {
-        return this.contractId;
-    }
-
-    public Subcontract contractId(Long contractId) {
-        this.setContractId(contractId);
-        return this;
-    }
-
-    public void setContractId(Long contractId) {
-        this.contractId = contractId;
-    }
-
-    public Long getProjectId() {
-        return this.projectId;
-    }
-
-    public Subcontract projectId(Long projectId) {
-        this.setProjectId(projectId);
-        return this;
-    }
-
-    public void setProjectId(Long projectId) {
-        this.projectId = projectId;
     }
 
     public String getSubcontractCipher() {
@@ -515,8 +475,6 @@ public class Subcontract implements Serializable {
     public String toString() {
         return "Subcontract{" +
             "id=" + getId() +
-            ", contractId=" + getContractId() +
-            ", projectId=" + getProjectId() +
             ", subcontractCipher='" + getSubcontractCipher() + "'" +
             ", statusId='" + getStatusId() + "'" +
             ", cooperationTypeId='" + getCooperationTypeId() + "'" +

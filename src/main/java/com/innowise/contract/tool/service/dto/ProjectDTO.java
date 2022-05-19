@@ -16,13 +16,6 @@ public class ProjectDTO implements Serializable {
     private Long id;
 
     /**
-     * Клиент
-     */
-    @NotNull(message = "must not be null")
-    @Schema(description = "Клиент", required = true)
-    private Long clientId;
-
-    /**
      * Название проекта
      */
     @NotNull(message = "must not be null")
@@ -68,14 +61,6 @@ public class ProjectDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
     }
 
     public String getName() {
@@ -160,7 +145,6 @@ public class ProjectDTO implements Serializable {
     public String toString() {
         return "ProjectDTO{" +
             "id=" + getId() +
-            ", clientId=" + getClientId() +
             ", name='" + getName() + "'" +
             ", startDate='" + getStartDate() + "'" +
             ", finishDate='" + getFinishDate() + "'" +

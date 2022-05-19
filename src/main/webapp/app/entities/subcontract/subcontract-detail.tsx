@@ -34,24 +34,6 @@ export const SubcontractDetail = (props: RouteComponentProps<{ id: string }>) =>
           </dt>
           <dd>{subcontractEntity.id}</dd>
           <dt>
-            <span id="contractId">
-              <Translate contentKey="contractToolApp.subcontract.contractId">Contract Id</Translate>
-            </span>
-            <UncontrolledTooltip target="contractId">
-              <Translate contentKey="contractToolApp.subcontract.help.contractId" />
-            </UncontrolledTooltip>
-          </dt>
-          <dd>{subcontractEntity.contractId}</dd>
-          <dt>
-            <span id="projectId">
-              <Translate contentKey="contractToolApp.subcontract.projectId">Project Id</Translate>
-            </span>
-            <UncontrolledTooltip target="projectId">
-              <Translate contentKey="contractToolApp.subcontract.help.projectId" />
-            </UncontrolledTooltip>
-          </dt>
-          <dd>{subcontractEntity.projectId}</dd>
-          <dt>
             <span id="subcontractCipher">
               <Translate contentKey="contractToolApp.subcontract.subcontractCipher">Subcontract Cipher</Translate>
             </span>

@@ -28,7 +28,6 @@ public class ContractRowMapper implements BiFunction<Row, String, Contract> {
         Contract entity = new Contract();
         entity.setId(converter.fromRow(row, prefix + "_id", Long.class));
         entity.setCipher(converter.fromRow(row, prefix + "_cipher", String.class));
-        entity.setClientId(converter.fromRow(row, prefix + "_client_id", Long.class));
         entity.setProviderId(converter.fromRow(row, prefix + "_provider_id", String.class));
         entity.setTypeId(converter.fromRow(row, prefix + "_type_id", String.class));
         entity.setSum(converter.fromRow(row, prefix + "_sum", Float.class));

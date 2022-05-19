@@ -40,15 +40,6 @@ export const ContractDetail = (props: RouteComponentProps<{ id: string }>) => {
           </dt>
           <dd>{contractEntity.cipher}</dd>
           <dt>
-            <span id="clientId">
-              <Translate contentKey="contractToolApp.contract.clientId">Client Id</Translate>
-            </span>
-            <UncontrolledTooltip target="clientId">
-              <Translate contentKey="contractToolApp.contract.help.clientId" />
-            </UncontrolledTooltip>
-          </dt>
-          <dd>{contractEntity.clientId}</dd>
-          <dt>
             <span id="providerId">
               <Translate contentKey="contractToolApp.contract.providerId">Provider Id</Translate>
             </span>

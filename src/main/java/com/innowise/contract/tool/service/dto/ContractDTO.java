@@ -23,13 +23,6 @@ public class ContractDTO implements Serializable {
     private String cipher;
 
     /**
-     * Айди клиента
-     */
-    @NotNull(message = "must not be null")
-    @Schema(description = "Айди клиента", required = true)
-    private Long clientId;
-
-    /**
      * Справочник поставщиков
      */
     @NotNull(message = "must not be null")
@@ -122,14 +115,6 @@ public class ContractDTO implements Serializable {
 
     public void setCipher(String cipher) {
         this.cipher = cipher;
-    }
-
-    public Long getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
     }
 
     public String getProviderId() {
@@ -263,7 +248,6 @@ public class ContractDTO implements Serializable {
         return "ContractDTO{" +
             "id=" + getId() +
             ", cipher='" + getCipher() + "'" +
-            ", clientId=" + getClientId() +
             ", providerId='" + getProviderId() + "'" +
             ", typeId='" + getTypeId() + "'" +
             ", sum=" + getSum() +

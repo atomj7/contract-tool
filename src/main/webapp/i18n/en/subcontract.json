@@ -18,8 +18,6 @@
         "title": "Subcontract"
       },
       "id": "Id",
-      "contractId": "Contract Id",
-      "projectId": "Project Id",
       "subcontractCipher": "Subcontract Cipher",
       "statusId": "Status Id",
       "cooperationTypeId": "Cooperation Type Id",
@@ -41,8 +39,6 @@
       "contractPosition": "Contract Position",
       "help": {
         "id": "ПК",
-        "contractId": "Ссылка на контракт",
-        "projectId": "Ссылка на проект",
         "subcontractCipher": "Шифр субконтракта",
         "statusId": "Статус из справочника",
         "cooperationTypeId": "Вид сотрудничества справочник",

@@ -107,9 +107,6 @@ export const Contract = (props: RouteComponentProps<{ url: string }>) => {
                 <th className="hand" onClick={sort('cipher')}>
                   <Translate contentKey="contractToolApp.contract.cipher">Cipher</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
-                <th className="hand" onClick={sort('clientId')}>
-                  <Translate contentKey="contractToolApp.contract.clientId">Client Id</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
                 <th className="hand" onClick={sort('providerId')}>
                   <Translate contentKey="contractToolApp.contract.providerId">Provider Id</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
@@ -163,7 +160,6 @@ export const Contract = (props: RouteComponentProps<{ url: string }>) => {
                     </Button>
                   </td>
                   <td>{contract.cipher}</td>
-                  <td>{contract.clientId}</td>
                   <td>{contract.providerId}</td>
                   <td>{contract.typeId}</td>
                   <td>{contract.sum}</td>
