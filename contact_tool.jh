@@ -167,15 +167,15 @@ enum LifecycleStatus {
 
 
 relationship ManyToOne {
-	Project {client} to Client,
+	Project {client} to Client {project},
 
-	Contract {client} to Client ,
+	Contract {client} to Client {contract} ,
 	
-    Subcontract {contract} to Contract,
+    Subcontract {contract} to Contract {subcontract},
     
-    Subcontract {project} to Project,
+    Subcontract {project} to Project {subcontract},
 	
-   	ContractPosition {subcontract} to Subcontract
+   	ContractPosition {subcontract} to Subcontract {contractPosition}
 }
 
 

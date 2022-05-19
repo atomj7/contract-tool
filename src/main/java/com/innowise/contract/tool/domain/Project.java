@@ -1,8 +1,11 @@
 package com.innowise.contract.tool.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.innowise.contract.tool.domain.enumeration.LifecycleStatus;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import javax.validation.constraints.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -67,7 +70,12 @@ public class Project implements Serializable {
     private LifecycleStatus lifecycleStatus;
 
     @Transient
+    @JsonIgnoreProperties(value = { "projects", "contracts" }, allowSetters = true)
     private Client client;
+
+    @Transient
+    @JsonIgnoreProperties(value = { "contract", "project", "contractPositions" }, allowSetters = true)
+    private Set<Subcontract> subcontracts = new HashSet<>();
 
     @Column("client_id")
     private Long clientId;
@@ -189,6 +197,37 @@ public class Project implements Serializable {
 
     public Project client(Client client) {
         this.setClient(client);
+        return this;
+    }
+
+    public Set<Subcontract> getSubcontracts() {
+        return this.subcontracts;
+    }
+
+    public void setSubcontracts(Set<Subcontract> subcontracts) {
+        if (this.subcontracts != null) {
+            this.subcontracts.forEach(i -> i.setProject(null));
+        }
+        if (subcontracts != null) {
+            subcontracts.forEach(i -> i.setProject(this));
+        }
+        this.subcontracts = subcontracts;
+    }
+
+    public Project subcontracts(Set<Subcontract> subcontracts) {
+        this.setSubcontracts(subcontracts);
+        return this;
+    }
+
+    public Project addSubcontract(Subcontract subcontract) {
+        this.subcontracts.add(subcontract);
+        subcontract.setProject(this);
+        return this;
+    }
+
+    public Project removeSubcontract(Subcontract subcontract) {
+        this.subcontracts.remove(subcontract);
+        subcontract.setProject(null);
         return this;
     }
 

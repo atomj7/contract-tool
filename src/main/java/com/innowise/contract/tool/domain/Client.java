@@ -1,7 +1,10 @@
 package com.innowise.contract.tool.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.innowise.contract.tool.domain.enumeration.LifecycleStatus;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.validation.constraints.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -134,6 +137,14 @@ public class Client implements Serializable {
      */
     @Column("lifecycle_status")
     private LifecycleStatus lifecycleStatus;
+
+    @Transient
+    @JsonIgnoreProperties(value = { "client", "subcontracts" }, allowSetters = true)
+    private Set<Project> projects = new HashSet<>();
+
+    @Transient
+    @JsonIgnoreProperties(value = { "client", "subcontracts" }, allowSetters = true)
+    private Set<Contract> contracts = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -382,6 +393,68 @@ public class Client implements Serializable {
 
     public void setLifecycleStatus(LifecycleStatus lifecycleStatus) {
         this.lifecycleStatus = lifecycleStatus;
+    }
+
+    public Set<Project> getProjects() {
+        return this.projects;
+    }
+
+    public void setProjects(Set<Project> projects) {
+        if (this.projects != null) {
+            this.projects.forEach(i -> i.setClient(null));
+        }
+        if (projects != null) {
+            projects.forEach(i -> i.setClient(this));
+        }
+        this.projects = projects;
+    }
+
+    public Client projects(Set<Project> projects) {
+        this.setProjects(projects);
+        return this;
+    }
+
+    public Client addProject(Project project) {
+        this.projects.add(project);
+        project.setClient(this);
+        return this;
+    }
+
+    public Client removeProject(Project project) {
+        this.projects.remove(project);
+        project.setClient(null);
+        return this;
+    }
+
+    public Set<Contract> getContracts() {
+        return this.contracts;
+    }
+
+    public void setContracts(Set<Contract> contracts) {
+        if (this.contracts != null) {
+            this.contracts.forEach(i -> i.setClient(null));
+        }
+        if (contracts != null) {
+            contracts.forEach(i -> i.setClient(this));
+        }
+        this.contracts = contracts;
+    }
+
+    public Client contracts(Set<Contract> contracts) {
+        this.setContracts(contracts);
+        return this;
+    }
+
+    public Client addContract(Contract contract) {
+        this.contracts.add(contract);
+        contract.setClient(this);
+        return this;
+    }
+
+    public Client removeContract(Contract contract) {
+        this.contracts.remove(contract);
+        contract.setClient(null);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

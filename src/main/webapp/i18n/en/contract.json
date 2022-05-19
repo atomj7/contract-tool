@@ -33,6 +33,7 @@
       "link": "Link",
       "lifecycleStatus": "Lifecycle Status",
       "client": "Client",
+      "subcontract": "Subcontract",
       "help": {
         "cipher": "Шифр контракта",
         "clientId": "Айди клиента",

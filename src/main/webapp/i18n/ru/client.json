@@ -36,6 +36,8 @@
       "swiftCode": "Swift Code",
       "ibanCode": "Iban Code",
       "lifecycleStatus": "Lifecycle Status",
+      "project": "Project",
+      "contract": "Contract",
       "help": {
         "name": "Название организации клиента",
         "salesManagerId": "Sales Manager, который заводил клиента",

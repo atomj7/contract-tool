@@ -61,6 +61,12 @@
       "otherEntityRelationshipName": "project",
       "relationshipName": "client",
       "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "subcontract",
+      "otherEntityRelationshipName": "project",
+      "relationshipName": "subcontract",
+      "relationshipType": "one-to-many"
     }
   ],
   "service": "serviceClass"

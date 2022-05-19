@@ -1,6 +1,7 @@
 import dayjs from 'dayjs';
 import { IContract } from 'app/shared/model/contract.model';
 import { IProject } from 'app/shared/model/project.model';
+import { IContractPosition } from 'app/shared/model/contract-position.model';
 import { LifecycleStatus } from 'app/shared/model/enumerations/lifecycle-status.model';
 
 export interface ISubcontract {
@@ -25,6 +26,7 @@ export interface ISubcontract {
   lifecycleStatus?: LifecycleStatus | null;
   contract?: IContract | null;
   project?: IProject | null;
+  contractPositions?: IContractPosition[] | null;
 }
 
 export const defaultValue: Readonly<ISubcontract> = {};

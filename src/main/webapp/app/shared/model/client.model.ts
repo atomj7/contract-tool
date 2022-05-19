@@ -1,3 +1,5 @@
+import { IProject } from 'app/shared/model/project.model';
+import { IContract } from 'app/shared/model/contract.model';
 import { LifecycleStatus } from 'app/shared/model/enumerations/lifecycle-status.model';
 
 export interface IClient {
@@ -20,6 +22,8 @@ export interface IClient {
   swiftCode?: string | null;
   ibanCode?: string | null;
   lifecycleStatus?: LifecycleStatus | null;
+  projects?: IProject[] | null;
+  contracts?: IContract[] | null;
 }
 
 export const defaultValue: Readonly<IClient> = {

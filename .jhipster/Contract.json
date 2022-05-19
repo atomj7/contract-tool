@@ -103,6 +103,12 @@
       "otherEntityRelationshipName": "contract",
       "relationshipName": "client",
       "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "subcontract",
+      "otherEntityRelationshipName": "contract",
+      "relationshipName": "subcontract",
+      "relationshipType": "one-to-many"
     }
   ],
   "service": "serviceClass"

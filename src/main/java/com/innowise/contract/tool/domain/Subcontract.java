@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.innowise.contract.tool.domain.enumeration.LifecycleStatus;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 import javax.validation.constraints.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
@@ -148,12 +150,16 @@ public class Subcontract implements Serializable {
     private LifecycleStatus lifecycleStatus;
 
     @Transient
-    @JsonIgnoreProperties(value = { "client" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "client", "subcontracts" }, allowSetters = true)
     private Contract contract;
 
     @Transient
-    @JsonIgnoreProperties(value = { "client" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "client", "subcontracts" }, allowSetters = true)
     private Project project;
+
+    @Transient
+    @JsonIgnoreProperties(value = { "subcontract" }, allowSetters = true)
+    private Set<ContractPosition> contractPositions = new HashSet<>();
 
     @Column("contract_id")
     private Long contractId;
@@ -435,6 +441,37 @@ public class Subcontract implements Serializable {
 
     public Subcontract project(Project project) {
         this.setProject(project);
+        return this;
+    }
+
+    public Set<ContractPosition> getContractPositions() {
+        return this.contractPositions;
+    }
+
+    public void setContractPositions(Set<ContractPosition> contractPositions) {
+        if (this.contractPositions != null) {
+            this.contractPositions.forEach(i -> i.setSubcontract(null));
+        }
+        if (contractPositions != null) {
+            contractPositions.forEach(i -> i.setSubcontract(this));
+        }
+        this.contractPositions = contractPositions;
+    }
+
+    public Subcontract contractPositions(Set<ContractPosition> contractPositions) {
+        this.setContractPositions(contractPositions);
+        return this;
+    }
+
+    public Subcontract addContractPosition(ContractPosition contractPosition) {
+        this.contractPositions.add(contractPosition);
+        contractPosition.setSubcontract(this);
+        return this;
+    }
+
+    public Subcontract removeContractPosition(ContractPosition contractPosition) {
+        this.contractPositions.remove(contractPosition);
+        contractPosition.setSubcontract(null);
         return this;
     }
 

@@ -93,7 +93,7 @@ public class ContractPosition implements Serializable {
     private LifecycleStatus lifecycleStatus;
 
     @Transient
-    @JsonIgnoreProperties(value = { "contract", "project" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "contract", "project", "contractPositions" }, allowSetters = true)
     private Subcontract subcontract;
 
     @Column("subcontract_id")
