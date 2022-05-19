@@ -43,8 +43,6 @@ entity Contract {
 	id Long,
     /** Шифр контракта*/
     cipher String required,
-	/**Айди клиента*/
-	clientId Long required,
     /** Справочник поставщиков*/
     providerId String required,
     /**Тип контракта справочник*/
@@ -75,8 +73,6 @@ entity Contract {
 /**Projects*/
 entity Project {
 	id Long,
-    /**Клиент*/
-    clientId Long required,
 	/**Название проекта*/
 	name String required,
     /**Дата начала*/
@@ -96,10 +92,6 @@ entity Subcontract {
 
 	/**ПК*/
     id Long,
-    /**Ссылка на контракт*/
-    contractId Long required,
-    /**Ссылка на проект*/
-    projectId Long required,
     /**Шифр субконтракта*/
     subcontractCipher String required,
     /**Статус из справочника*/
@@ -142,8 +134,6 @@ entity ContractPosition {
 	contractPositionId String required,
     /**Оплачиваемый сотрудник*/
     employeeId Long,
-    /**Ссылка на субконтракт*/
-	subcontractId Long required ,
     /**Контрактные позиции*/
 	numberContractPosition Integer required ,
     /**Тип Ограничения справочник*/
