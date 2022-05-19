@@ -1,0 +1,47 @@
+{
+  "contractToolApp": {
+    "contractPosition": {
+      "home": {
+        "title": "Contract Positions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Contract Position",
+        "createOrEditLabel": "Create or edit a Contract Position",
+        "notFound": "No Contract Positions found"
+      },
+      "created": "A new Contract Position is created with identifier {{ param }}",
+      "updated": "A Contract Position is updated with identifier {{ param }}",
+      "deleted": "A Contract Position is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Contract Position {{ id }}?"
+      },
+      "detail": {
+        "title": "Contract Position"
+      },
+      "id": "Id",
+      "contractPositionId": "Contract Position Id",
+      "employeeId": "Employee Id",
+      "subcontractId": "Subcontract Id",
+      "numberContractPosition": "Number Contract Position",
+      "restrictionTypeId": "Restriction Type Id",
+      "restriction": "Restriction",
+      "currencyId": "Currency Id",
+      "rateAnHour": "Rate An Hour",
+      "statusId": "Status Id",
+      "lifecycleStatus": "Lifecycle Status",
+      "subcontract": "Subcontract",
+      "help": {
+        "id": "PK",
+        "contractPositionId": "Справочник контрактных позиций",
+        "employeeId": "Оплачиваемый сотрудник",
+        "subcontractId": "Ссылка на субконтракт",
+        "numberContractPosition": "Контрактные позиции",
+        "restrictionTypeId": "Тип Ограничения справочник",
+        "restriction": "Ограничение",
+        "currencyId": "Валюта справочник",
+        "rateAnHour": "Рейт час",
+        "statusId": "Статус словарей",
+        "lifecycleStatus": "Актуальный или удаленный"
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "contractToolApp": {
+    "project": {
+      "home": {
+        "title": "Projects",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Project",
+        "createOrEditLabel": "Создать или отредактировать Project",
+        "notFound": "Projects не найдено"
+      },
+      "created": "Новый Project создан с идентификатором {{ param }}",
+      "updated": "Project обновлен с идентификатором {{ param }}",
+      "deleted": "Project удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Project {{ id }}?"
+      },
+      "detail": {
+        "title": "Project"
+      },
+      "id": "Id",
+      "clientId": "Client Id",
+      "name": "Name",
+      "startDate": "Start Date",
+      "finishDate": "Finish Date",
+      "link": "Link",
+      "statusId": "Status Id",
+      "lifecycleStatus": "Lifecycle Status",
+      "client": "Client",
+      "help": {
+        "clientId": "Клиент",
+        "name": "Название проекта",
+        "startDate": "Дата начала",
+        "finishDate": "Дата окончания",
+        "link": "Ссылка",
+        "statusId": "Статус дикшинари",
+        "lifecycleStatus": "Актуальный или удаленный"
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "contractToolApp": {
+    "subcontract": {
+      "home": {
+        "title": "Subcontracts",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Subcontract",
+        "createOrEditLabel": "Создать или отредактировать Subcontract",
+        "notFound": "Subcontracts не найдено"
+      },
+      "created": "Новый Subcontract создан с идентификатором {{ param }}",
+      "updated": "Subcontract обновлен с идентификатором {{ param }}",
+      "deleted": "Subcontract удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Subcontract {{ id }}?"
+      },
+      "detail": {
+        "title": "Subcontract"
+      },
+      "id": "Id",
+      "contractId": "Contract Id",
+      "projectId": "Project Id",
+      "subcontractCipher": "Subcontract Cipher",
+      "statusId": "Status Id",
+      "cooperationTypeId": "Cooperation Type Id",
+      "sum": "Sum",
+      "positions": "Positions",
+      "currencyId": "Currency Id",
+      "paymentTermTypeId": "Payment Term Type Id",
+      "paymentTermId": "Payment Term Id",
+      "startDate": "Start Date",
+      "finishDate": "Finish Date",
+      "typeId": "Type Id",
+      "tasktTypeId": "Taskt Type Id",
+      "technologyId": "Technology Id",
+      "domenId": "Domen Id",
+      "link": "Link",
+      "lifecycleStatus": "Lifecycle Status",
+      "contract": "Contract",
+      "project": "Project",
+      "help": {
+        "id": "ПК",
+        "contractId": "Ссылка на контракт",
+        "projectId": "Ссылка на проект",
+        "subcontractCipher": "Шифр субконтракта",
+        "statusId": "Статус из справочника",
+        "cooperationTypeId": "Вид сотрудничества справочник",
+        "sum": "Сумма",
+        "positions": "Количество контрактных позиций в рамках субконтракта",
+        "currencyId": "Справочник валют",
+        "paymentTermTypeId": "Справочник типов сроков оплаты",
+        "paymentTermId": "Cрок оплаты",
+        "startDate": "Дата начала",
+        "finishDate": "Дата окончания",
+        "typeId": "Тип субконтракта справочник",
+        "tasktTypeId": "Тип CV Project справочник",
+        "technologyId": "Технология справочник",
+        "domenId": "Домен справочник",
+        "link": "Ссылка на документ",
+        "lifecycleStatus": "Актуальный или удаленный"
+      }
+    }
+  }
+}
