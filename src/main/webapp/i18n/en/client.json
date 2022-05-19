@@ -1,0 +1,61 @@
+{
+  "contractToolApp": {
+    "client": {
+      "home": {
+        "title": "Clients",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Client",
+        "createOrEditLabel": "Create or edit a Client",
+        "notFound": "No Clients found"
+      },
+      "created": "A new Client is created with identifier {{ param }}",
+      "updated": "A Client is updated with identifier {{ param }}",
+      "deleted": "A Client is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Client {{ id }}?"
+      },
+      "detail": {
+        "title": "Client"
+      },
+      "id": "Id",
+      "name": "Name",
+      "salesManagerId": "Sales Manager Id",
+      "countryId": "Country Id",
+      "partnerStatus": "Partner Status",
+      "contactPerson": "Contact Person",
+      "contractEmail": "Contract Email",
+      "industryId": "Industry Id",
+      "signer": "Signer",
+      "signerPosition": "Signer Position",
+      "legalAdress": "Legal Adress",
+      "registrationNumber": "Registration Number",
+      "baseOfActivityId": "Base Of Activity Id",
+      "vatNumber": "Vat Number",
+      "bankName": "Bank Name",
+      "bankAdress": "Bank Adress",
+      "swiftCode": "Swift Code",
+      "ibanCode": "Iban Code",
+      "lifecycleStatus": "Lifecycle Status",
+      "help": {
+        "name": "Название организации клиента",
+        "salesManagerId": "Sales Manager, который заводил клиента",
+        "countryId": "Страна клиента справочник",
+        "partnerStatus": "Статус партнера",
+        "contactPerson": "Контактное лицо",
+        "contractEmail": "Электронная почта контактного лица",
+        "industryId": "Индустрия клиента справочник",
+        "signer": "Лицо, которое подписывает все документы(Подписант)",
+        "signerPosition": "Должность подписанта",
+        "legalAdress": "Юридический адрес",
+        "registrationNumber": "Регистрационный номер организации клиента",
+        "baseOfActivityId": "Основание деятельности справочник",
+        "vatNumber": "VAT номер(УНП)",
+        "bankName": "Банк",
+        "bankAdress": "Адрес банка",
+        "swiftCode": "SWIFT код",
+        "ibanCode": "IBAN",
+        "lifecycleStatus": "Актуальный или удаленный"
+      }
+    }
+  }
+}

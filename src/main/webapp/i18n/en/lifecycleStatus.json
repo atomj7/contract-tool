@@ -1,0 +1,9 @@
+{
+  "contractToolApp": {
+    "LifecycleStatus": {
+      "null": "",
+      "ACTUAL": "ACTUAL",
+      "DELETED": "DELETED"
+    }
+  }
+}

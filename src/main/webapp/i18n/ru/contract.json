@@ -1,0 +1,53 @@
+{
+  "contractToolApp": {
+    "contract": {
+      "home": {
+        "title": "Contracts",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Contract",
+        "createOrEditLabel": "Создать или отредактировать Contract",
+        "notFound": "Contracts не найдено"
+      },
+      "created": "Новый Contract создан с идентификатором {{ param }}",
+      "updated": "Contract обновлен с идентификатором {{ param }}",
+      "deleted": "Contract удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Contract {{ id }}?"
+      },
+      "detail": {
+        "title": "Contract"
+      },
+      "id": "Id",
+      "cipher": "Cipher",
+      "clientId": "Client Id",
+      "providerId": "Provider Id",
+      "typeId": "Type Id",
+      "sum": "Sum",
+      "positionCount": "Position Count",
+      "currencyId": "Currency Id",
+      "paymentTerm": "Payment Term",
+      "paymentTermTypeId": "Payment Term Type Id",
+      "startDate": "Start Date",
+      "finishDate": "Finish Date",
+      "statusId": "Status Id",
+      "link": "Link",
+      "lifecycleStatus": "Lifecycle Status",
+      "client": "Client",
+      "help": {
+        "cipher": "Шифр контракта",
+        "clientId": "Айди клиента",
+        "providerId": "Справочник поставщиков",
+        "typeId": "Тип контракта справочник",
+        "sum": "Сумма",
+        "positionCount": "Всего позиций",
+        "currencyId": "Валюта справочник",
+        "paymentTerm": "Срок оплаты кол-во дней",
+        "paymentTermTypeId": "Тип срока оплаты справочник",
+        "startDate": "Дата начала",
+        "finishDate": "Дата окончания",
+        "link": "Ссылка",
+        "lifecycleStatus": "Актуальный или удаленный"
+      }
+    }
+  }
+}
